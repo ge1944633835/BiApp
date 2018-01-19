@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--login-->
+    <string name="label_login_action">LOGIN</string>
+    <string name="label_login_register">SIGN UP NOW</string>
+    <string name="label_login_forget">FORGET password?</string>
+    <string name="label_login_account_hint">ACCOUNT</string>
+    <string name="label_login_password_hint">PASSWORD</string>
+
+    <!--register-->
+    <string name="label_register_sign_up">SIGN UP YOUR ACCOUNT</string>
+    <string name="label_register_email">PERSONAL EMAIL</string>
+    <string name="label_register_phone">PERSONAL PHONE</string>
+    <string name="label_register_email_hint">your email</string>
+    <string name="label_register_phone_hint">your phone</string>
+    <string name="label_register_wrong_code">WRONG CODE</string>
+    <string name="label_register_resend_code">Resend author code</string>
+    <string name="label_register_password">PASSWORD</string>
+    <string name="label_register_password_hint">Password</string>
+    <string name="label_register_password_again_hint">Again</string>
+    <string name="label_register_photo">YOUR PHOTO</string>
+    <string name="label_register_jump">JUMP IT</string>
+    <string name="label_register_complete">Congratulation !!!</string>
+    <string name="label_register_complete_begin">BEGIN</string>
+
+    <!--home-->
+    <!--4个tab-->
+    <string name="label_tab_top">TOP</string>
+    <string name="label_tab_chat">CHAT</string>
+    <string name="label_tab_folder">FOLDER</string>
+    <string name="label_tab_mission">MISSION</string>
+
+</resources>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/len_10">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/len_40"
+        android:text="@string/label_register_sign_up"
+        android:textColor="#c5c5c5"
+        android:textSize="@dimen/font_12" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/len_10"
+        android:text="@string/label_register_password"
+        android:textColor="#F67ECA"
+        android:textSize="@dimen/font_16" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/len_10">
+
+        <EditText
+            android:id="@+id/fragment_register_et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/label_register_password_hint"
+            android:inputType="textPassword"
+            android:theme="@style/MyEditText" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/len_10">
+
+        <EditText
+            android:id="@+id/fragment_register_et_password_again"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/label_register_password_again_hint"
+            android:inputType="textPassword"
+            android:theme="@style/MyEditText" />
+
+        <ImageView
+            android:id="@+id/fragment_register_img_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_register_one_next" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>
