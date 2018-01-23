@@ -26,7 +26,6 @@ import java.util.List;
 import butterknife.ButterKnife;
 import me.sunlight.sdk.common.Common;
 import me.sunlight.sdk.common.R;
-import me.sunlight.sdk.common.util.StatusBarUtil;
 import me.sunlight.sdk.common.util.Utils;
 import me.sunlight.sdk.common.widget.convention.PlaceHolderView;
 import me.sunlight.sdk.common.widget.titlebar.CommonTitleBar;
@@ -94,6 +93,7 @@ public abstract class Activity extends AppCompatActivity {
         filter.addAction(Common.Constants.OFFLINE_ACTION);
         mOffLineReceiver = new OffLineReceiver();
         this.registerReceiver(mOffLineReceiver, filter);
+
     }
 
     protected boolean checkIsImmersive() {
@@ -148,7 +148,7 @@ public abstract class Activity extends AppCompatActivity {
         mTitleBar.setTitleColor(getResources().getColor(R.color.black));
 
         /** 下划分割线 */
-        mTitleBar.setDividerColor(getResources().getColor(R.color.white));
+        mTitleBar.setDividerColor(Color.parseColor("#ececec"));
 
         /** 如果你的项目使用了沉浸式，布局时候加上这行代码，TitleBar会自动填充状态栏 */
         if (checkIsImmersive()) {
@@ -163,7 +163,6 @@ public abstract class Activity extends AppCompatActivity {
      * 初始化控件调用之前
      */
     protected void initBefore() {
-        StatusBarUtil.setColor(this, Color.parseColor("#000000"));
     }
 
     /**
@@ -244,6 +243,7 @@ public abstract class Activity extends AppCompatActivity {
         }
     }
 
+
     /***
      * 中心思想就是首先判断我们手指点击的区域坐标是否落在EditText上面，
      * 如果不是的话，我们需要强制关闭输入法，不管是否已经显示和关闭，
@@ -288,6 +288,7 @@ public abstract class Activity extends AppCompatActivity {
             mOffLineReceiver = null;
         }
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

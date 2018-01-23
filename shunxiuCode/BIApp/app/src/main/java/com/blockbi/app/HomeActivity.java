@@ -1,20 +1,35 @@
 package com.blockbi.app;
 
 import android.animation.Animator;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Color;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnticipateOvershootInterpolator;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.blockbi.app.ui.activities.account.LoginActivity;
+import com.blockbi.app.ui.fragments.home.HomeMenuPageOneFragment;
+import com.blockbi.app.ui.widget.MenuViewPager;
+
 import net.qiujuer.genius.ui.widget.FloatActionButton;
+
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -27,6 +42,24 @@ import me.sunlight.sdk.common.widget.recycler.RecyclerAdapter;
 import me.sunlight.sdk.common.widget.titlebar.CommonTitleBar;
 
 public class HomeActivity extends Activity {
+
+    @BindView(R.id.drawer_layout)
+    DrawerLayout mDrawerLayout;
+
+    @BindView(R.id.home_menu_vp)
+    MenuViewPager mViewPager;
+    private FragmentPagerAdapter mPagerAdapter;
+
+    @BindView(R.id.home_menu_img_indicate_one)
+    ImageView mIndicateOne;
+    @BindView(R.id.home_menu_img_indicate_two)
+    ImageView mIndicateTwo;
+    @BindView(R.id.home_menu_img_indicate_three)
+    ImageView mIndicateThree;
+
+    @BindView(R.id.home_title_bar)
+    CommonTitleBar mTitleBar;
+
     @BindView(R.id.bottomTab)
     BottomTab mBottomtab;
 
@@ -59,18 +92,19 @@ public class HomeActivity extends Activity {
     @Override
     protected void initBefore() {
         super.initBefore();
+        hideTitleBar();
 
-        getTitleBar().setLeftImageResource(R.mipmap.ic_home_left_menu);
-
-        // todo 侧滑菜单
-        getTitleBar().setLeftClickListener(null);
-        getTitleBar().addAction(new CommonTitleBar.ImageAction(R.mipmap.ic_search) {
+        mTitleBar.setLeftImageResource(R.mipmap.ic_home_left_menu);
+        mTitleBar.setDividerColor(Color.parseColor("#ececec"));
+        mTitleBar.setDividerHeight(2);
+        mTitleBar.setLeftClickListener(view -> mDrawerLayout.openDrawer(GravityCompat.START));
+        mTitleBar.addAction(new CommonTitleBar.ImageAction(R.mipmap.ic_search) {
             @Override
             public void performAction(View view) {
                 App.showToast("搜索");
             }
         }, 0);
-        getTitleBar().addAction(new CommonTitleBar.ImageAction(R.mipmap.ic_message) {
+        mTitleBar.addAction(new CommonTitleBar.ImageAction(R.mipmap.ic_message) {
             @Override
             public void performAction(View view) {
                 App.showToast("消息列表");
@@ -125,6 +159,54 @@ public class HomeActivity extends Activity {
 
         View view = LayoutInflater.from(mContext).inflate(R.layout.layout_home_pop, null);
         mPopupWindow = new PopupWindow(view, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        // 设置侧边栏的viewpager
+        mViewPager.setAdapter(mPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
+            @Override
+            public Fragment getItem(int position) {
+                return new HomeMenuPageOneFragment();
+            }
+
+            @Override
+            public int getCount() {
+                return 3;
+            }
+        });
+        mViewPager.setPageSize(3);
+
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case 0:
+                        mIndicateOne.setImageResource(R.mipmap.ic_indicate_white);
+                        mIndicateTwo.setImageResource(R.mipmap.ic_indicate_gray);
+                        mIndicateThree.setImageResource(R.mipmap.ic_indicate_gray);
+                        break;
+                    case 1:
+                        mIndicateOne.setImageResource(R.mipmap.ic_indicate_gray);
+                        mIndicateTwo.setImageResource(R.mipmap.ic_indicate_white);
+                        mIndicateThree.setImageResource(R.mipmap.ic_indicate_gray);
+                        break;
+                    case 2:
+                        mIndicateOne.setImageResource(R.mipmap.ic_indicate_gray);
+                        mIndicateTwo.setImageResource(R.mipmap.ic_indicate_gray);
+                        mIndicateThree.setImageResource(R.mipmap.ic_indicate_white);
+                        break;
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
     }
 
     class ItemHolder extends RecyclerAdapter.ViewHolder<String> {
@@ -145,8 +227,10 @@ public class HomeActivity extends Activity {
     @Override
     protected void initData() {
         super.initData();
-        mAdapter.add("123", "hehhe", "ssdada", "dsda", "werr", "hehhe", "ssdada", "dsda", "werr");
+        mAdapter.add("123", "hehe", "ssdada", "dsda", "werr", "hehhe", "ssdada", "dsda", "werr");
     }
+
+
 
     @OnClick(R.id.home_action_btn)
     public void action() {
@@ -194,6 +278,21 @@ public class HomeActivity extends Activity {
                     }
                 })
                 .start();
+    }
+
+
+    public void reLogin(View view) {
+        LoginActivity.runActivity(mContext, LoginActivity.class);
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 
 }

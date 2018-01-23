@@ -5,19 +5,20 @@ package me.sunlight.sdk.common;
  * 邮箱：1944633835@qq.com
  */
 
-public class Common {
+public interface Common {
 
-    public interface Constants {
+    interface Constants {
 
         /*----广播 begin----*/
         String OFFLINE_ACTION = "me.sunlight.common.offline";
-        String ORDER_DELETED_ACTION = "me.sunlight.common.orderDeleted";
-        String NOTHING_SELECT_ACTION = "me.sunlight.common.orderNotingSelect";
+        /*----广播 end----*/
+
+        /*----语言切换广播 begin----*/
+        String LANGUAGE_ACTION = "me.sunlight.common.language";
          /*----广播 end----*/
 
-
+        String LANGUAGE_CHINESE = "zh_CN";
+        String LANGUAGE_ENGLISH = "en";
     }
-
-
 
 }

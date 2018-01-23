@@ -2,6 +2,8 @@ package me.sunlight.sdk.common.util;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.view.View;
 import android.view.WindowManager;
@@ -22,10 +24,6 @@ import java.util.Date;
  */
 public class Utils {
 
-    private final static String TOKEN_KEY = "TOKEN_KEY";
-    private final static String SESSION_KEY = "SESSION_KEY";
-    private final static String DEFAULT_ADDRESS_KEY = "DEFAULT_ADDRESS_KEY";
-    private final static String SHARE_URL_KEY = "SHARE_URL_KEY";
 
     private static Context mContext;
 
@@ -235,71 +233,7 @@ public class Utils {
         return df.format(Double.parseDouble(number));
     }
 
-    /**
-     * 保存用户token，只用于推送
-     *
-     * @param tokenId
-     */
-    public static void saveUserToken(String tokenId) {
-        RxSPUtils.putString(mContext, TOKEN_KEY, tokenId);
-    }
 
-    /**
-     * 取值 tokenId
-     */
-    public static String getUserToken() {
-        return RxSPUtils.getString(mContext, TOKEN_KEY);
-    }
-
-
-    /**
-     * 保存用户sessionId
-     *
-     * @param sessionId
-     */
-    public static void saveSessionId(String sessionId) {
-        RxSPUtils.putString(mContext, SESSION_KEY, sessionId);
-    }
-
-    /**
-     * 取值 sessionId
-     */
-    public static String getSessionId() {
-        return RxSPUtils.getString(mContext, SESSION_KEY);
-    }
-
-
-    /**
-     * 保存默认地址
-     */
-    public static void saveDefaultAddress(String json) {
-        RxSPUtils.putString(mContext, DEFAULT_ADDRESS_KEY, json);
-    }
-
-    /**
-     * 取值 默认地址
-     * 返回 json
-     */
-    public static String getDefaultAddress() {
-        return RxSPUtils.getString(mContext, DEFAULT_ADDRESS_KEY);
-    }
-
-
-    /**
-     * 保存分享链接
-     */
-    public static void saveShareUrl(String url) {
-        RxSPUtils.putString(mContext, SHARE_URL_KEY, url);
-    }
-
-    /**
-     * 取值 分享的链接
-     *
-     * @return url
-     */
-    public static String getShareUrl() {
-        return RxSPUtils.getString(mContext, SHARE_URL_KEY);
-    }
 
 
     /**
@@ -315,5 +249,42 @@ public class Utils {
         if (type == 0) return width;
         if (type == 1) return height;
         return height;
+    }
+
+
+    /**
+     * get App versionCode
+     * @param context
+     * @return
+     */
+    public static String getVersionCode(Context context){
+        PackageManager packageManager=context.getPackageManager();
+        PackageInfo packageInfo;
+        String versionCode="";
+        try {
+            packageInfo=packageManager.getPackageInfo(context.getPackageName(),0);
+            versionCode=packageInfo.versionCode+"";
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return versionCode;
+    }
+
+    /**
+     * get App versionName
+     * @param context
+     * @return
+     */
+    public static  String getVersionName(Context context){
+        PackageManager packageManager=context.getPackageManager();
+        PackageInfo packageInfo;
+        String versionName="";
+        try {
+            packageInfo=packageManager.getPackageInfo(context.getPackageName(),0);
+            versionName=packageInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return versionName;
     }
 }

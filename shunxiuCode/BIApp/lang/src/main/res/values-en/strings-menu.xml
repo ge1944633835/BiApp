@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="label_slide_menu_setting">SETTING</string>
+    <string name="label_setting_title">Choose Language</string>
+    <string name="label_setting_chinese">Chinese</string>
+    <string name="label_setting_english">English</string>
+    <string name="label_setting_cancel">Cancel</string>
+
+
+    <!--左滑菜单的标签-->
+    <string name="label_menu_personal_profile">PERSONAL PROFILE</string>
+    <string name="label_menu_attention">ATTENTION</string>
+    <string name="label_menu_contact_list">CONTACT LIST</string>
+    <string name="label_menu_language">LANGUAGE</string>
+    <string name="label_menu_business_profile">BUSINESS PROFILE</string>
+    <string name="label_menu_business_function">BUSINESS FUNCTION</string>
+    <string name="label_menu_create_business">CREATE BUSINESS</string>
+    <string name="label_menu_setting">SETTING</string>
+
+
+</resources>

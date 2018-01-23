@@ -10,19 +10,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activities.account.LoginActivity">
+        <activity android:name=".ui.activities.GuideActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".ui.activities.account.RegisterActivity" />
+
+        <activity
+            android:name=".HomeActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.activities.account.LoginActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".ui.activities.account.RegisterActivity"
+            android:launchMode="singleTop" />
         <activity
             android:name="me.iwf.photopicker.PhotoPickerActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".ui.activities.account.RegisterCompleteActivity"></activity>
+        <activity android:name=".ui.activities.account.RegisterCompleteActivity" />
     </application>
 
 </manifest>

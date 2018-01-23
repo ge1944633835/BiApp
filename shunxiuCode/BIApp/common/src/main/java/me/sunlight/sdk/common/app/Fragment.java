@@ -29,7 +29,7 @@ public abstract class Fragment extends android.support.v4.app.Fragment {
         super.onAttach(context);
         // 初始化参数
         initArgs(getArguments());
-        mContext =context;
+        mContext = context;
     }
 
     @Override
@@ -52,9 +52,10 @@ public abstract class Fragment extends android.support.v4.app.Fragment {
                 ((ViewGroup) mRoot.getParent()).removeView(mRoot);
             }
         }
-        ButterKnife.bind(this,mRoot);
+        ButterKnife.bind(this, mRoot);
         return mRoot;
     }
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -67,6 +68,7 @@ public abstract class Fragment extends android.support.v4.app.Fragment {
         // 当View创建完成后初始化数据
         initData();
     }
+
     /**
      * 初始化相关参数
      */
@@ -93,11 +95,13 @@ public abstract class Fragment extends android.support.v4.app.Fragment {
      */
     protected void initData() {
     }
+
     /**
      * 当首次初始化数据的时候会调用的方法
      */
     protected void onFirstInit() {
     }
+
     /**
      * 返回按键触发时调用
      *
@@ -107,6 +111,7 @@ public abstract class Fragment extends android.support.v4.app.Fragment {
     public boolean onBackPressed() {
         return false;
     }
+
     /**
      * 设置占位布局
      *

@@ -1,20 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.blockbi.app.HomeActivity">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/home_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="@dimen/len_52" />
 
-    <me.sunlight.sdk.common.widget.bottombar.tab.BottomTab
-        android:id="@+id/bottomTab"
+    <FrameLayout
+        android:id="@+id/home_fl_container"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/len_52"
+        android:layout_height="match_parent">
+
+        <me.sunlight.sdk.common.widget.titlebar.CommonTitleBar
+            android:id="@+id/home_title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="48dp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/home_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/len_48"
+            android:paddingBottom="@dimen/len_52" />
+
+        <me.sunlight.sdk.common.widget.bottombar.tab.BottomTab
+            android:id="@+id/bottomTab"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/len_52"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:background="@color/white" />
+    </FrameLayout>
+
+
+    <View
+        android:id="@+id/home_view_shade"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom"
-        android:background="@color/white" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/len_20"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_pop_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="invisible">
+
+            <ImageView
+                android:layout_width="@dimen/len_52"
+                android:layout_height="@dimen/len_52"
+                android:layout_marginTop="@dimen/len_6"
+                android:src="@mipmap/ic_top_menu_one" />
+
+            <ImageView
+                android:layout_width="@dimen/len_52"
+                android:layout_height="@dimen/len_52"
+                android:layout_marginTop="@dimen/len_6"
+                android:src="@mipmap/ic_top_menu_one" />
+
+            <ImageView
+                android:layout_width="@dimen/len_52"
+                android:layout_height="@dimen/len_52"
+                android:layout_marginTop="@dimen/len_6"
+                android:src="@mipmap/ic_top_menu_one" />
+
+        </LinearLayout>
+
+        <net.qiujuer.genius.ui.widget.FloatActionButton
+            android:id="@+id/home_action_btn"
+            android:layout_width="@dimen/len_52"
+            android:layout_height="@dimen/len_52"
+            android:padding="@dimen/len_20"
+            android:src="@mipmap/ic_add"
+            app:gBackgroundColor="@color/black"
+            app:gTouchColor="@color/black" />
+    </LinearLayout>
 
 </RelativeLayout>

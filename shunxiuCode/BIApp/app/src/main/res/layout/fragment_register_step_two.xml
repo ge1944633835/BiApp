@@ -7,6 +7,7 @@
 
 
     <TextView
+        android:layout_marginLeft="@dimen/len_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/len_40"
@@ -15,12 +16,13 @@
         android:textSize="@dimen/font_12" />
 
     <TextView
+        android:layout_marginLeft="@dimen/len_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/len_10"
         android:text="@string/label_register_phone"
         android:textColor="#9320f8"
-        android:textSize="@dimen/font_16" />
+        android:textSize="@dimen/font_14" />
 
 
     <RelativeLayout
@@ -35,6 +37,7 @@
             android:hint="@string/label_register_phone_hint"
             android:inputType="phone"
             android:maxLength="11"
+            android:textSize="15sp"
             android:theme="@style/MyEditText" />
 
         <ImageView
@@ -92,6 +95,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/fragment_register_two_tv_wrong"
         android:textColor="#F5054F"
         android:textSize="@dimen/font_10"
         android:layout_marginTop="@dimen/len_10"
@@ -101,6 +105,7 @@
         android:layout_height="wrap_content" />
 
     <TextView
+        android:id="@+id/fragment_register_two_tv_resend"
         android:textColor="#5CA7E5"
         android:textSize="@dimen/font_14"
         android:layout_marginTop="@dimen/len_10"

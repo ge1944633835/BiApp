@@ -7,6 +7,7 @@
 
 
     <TextView
+        android:layout_marginLeft="@dimen/len_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/len_40"
@@ -15,12 +16,13 @@
         android:textSize="@dimen/font_12" />
 
     <TextView
+        android:layout_marginLeft="@dimen/len_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/len_10"
         android:text="@string/label_register_password"
         android:textColor="#F67ECA"
-        android:textSize="@dimen/font_16" />
+        android:textSize="@dimen/font_14" />
 
 
     <RelativeLayout
@@ -33,6 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/label_register_password_hint"
+            android:textSize="15sp"
             android:inputType="textPassword"
             android:theme="@style/MyEditText" />
 
@@ -48,6 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/label_register_password_again_hint"
+            android:textSize="15sp"
             android:inputType="textPassword"
             android:theme="@style/MyEditText" />
 
